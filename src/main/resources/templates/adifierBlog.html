@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/adifier.css">
+</head>
+<body>
+<!--目錄nav-->
+<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Adifier</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>首頁</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分類</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>標籤</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>歸檔</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>關於我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<div>
+    <!--中間內容-->
+    <div class="m-container-small m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui top attached segment">
+                <div class="ui horizontal link list">
+                    <div class="item">
+                        <img src="https://picsum.photos/100/100?image=1001" alt="" class="ui avatar image">
+                        <div class="content"><a href="#" class="header">Steven WU</a></div>
+                    </div>
+                    <div class="item">
+                        <i class="calendar icon"></i>2019-04-11
+                    </div>
+                    <div class="item">
+                        <i class="eye icon"></i>2342
+                    </div>
+                </div>
+            </div>
+            <div class="ui attached segment">
+                <!--圖片區域-->
+                <img src="https://picsum.photos/800/450?image=1001" alt="" class="ui fluid rounded image">
+            </div>
+            <div class="ui attached padded segment">
+                <!--內容區域-->
+                <div class="ui right aligned basic segment">
+                    <div class="ui orange basic orange label">原創</div>
+                </div>
+                <h2 class="ui center aligned header">刻意練習</h2>
+                <br>
+                <div id="content" class="m-padded-lr-responsive m-padded-tb-large">
+                    Kevin Durant在即將進入季後賽之際，正式穿上第十二代簽名戰靴Nike KD XII，與以往「KD」鞋型構造有相當大改變，在設計團隊與Kevin Durant協調革新，因此在最新一代簽名鞋款使用最新的避震科技，讓舒適和反饋平衡發揮，同時外觀頗有帥氣未來感。
+                    KD系列歷經多代成長與調整逐漸找出自我風格，但是Nike KD XII更讓鞋迷有耳目一新的感覺，在前幾個禮拜的球鞋消息發表，立刻在運動版上迅速成為熱點話題，不少搶先穿的球友表示：實穿腳感真的很好！
+                </div>
+                <!--標籤-->
+                <div class="m-padded-lr-responsive">
+                    <div class="ui basic teal left pointing label">方法論</div>
+                </div>
+                <!--按讚-->
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui orange basic circular button">按讚</button>
+                </div>
+                <div class="ui payQR flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>Line QRCode</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>Line QRCode</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="ui attached positive message">
+                <!--博客信息-->
+                <div class="ui middle aligned grid">
+                    <div class="eleven wide column">
+                        <ui class="list">
+                            <li>作者： Steven Wu</li>
+                            <li>發表時間： 2019-04-14</li>
+                            <li>版權聲明： 2019-04-14</li>
+                            <li>發表時間： 2019-04-14</li>
+                        </ui>
+                    </div>
+                    <div class="five wide column">
+                        <img src="../static/images/myQRcode.PNG" alt="" class="ui right floated rounded bordered image" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="ui bottom attached segment">
+                <!--留言區-->
+                <div class="ui teal segment">
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://picsum.photos/100/100?image=1001">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://picsum.photos/100/100?image=1001">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="https://picsum.photos/100/100?image=1001">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://picsum.photos/100/100?image=1001">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <textarea name="content" placeholder="請輸入評論..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                             <div class="ui left icon input">
+                                 <i class="user icon"></i>
+                                 <input type="text" name="nickname" placeholder="姓名">
+                             </div>
+                        </div>
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" placeholder="email">
+                            </div>
+                        </div>
+                        <div class="field m-mobile-wide m-margin-bottom-small ">
+                            <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>發布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--footer--->
+<footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/myQRcode.PNG" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新文章</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">聯繫我們</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                </div>
+            </div>
+
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Adifier</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">飛鈦網站</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019-2022 Steven Wu @ Adifier com</p>
+    </div>
+</footer>
+<script src="http://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $('.menu.toggle').click(function(){
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#payButton').popup({
+        popup: $('.payQR.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
+</script>
+</body>
+
+</html>
