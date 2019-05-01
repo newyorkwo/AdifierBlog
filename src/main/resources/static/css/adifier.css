@@ -98,13 +98,6 @@ body {
 .m-opacity-tiny {
     opacity: 0.6 !important;
 }
-/*------position---*/
-
-.m-right-top {
-    position: absolute;
-    top:0;
-    right: 0;
-}
 
 /*------display------*/
 .m-inline-block {
@@ -139,6 +132,11 @@ body {
 .m-right-bottom {
     bottom: 0 !important;
     right: 0 !important;
+}
+.m-right-top {
+    position: absolute;
+    top:0;
+    right: 0;
 }
 
 
