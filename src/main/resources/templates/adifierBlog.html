@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../static/css/typo.css">
     <link rel="stylesheet" href="../static/css/animate.css">
     <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
 </head>
 <body>
 <!--目錄nav-->
@@ -64,7 +65,7 @@
                 </div>
                 <h2 class="ui center aligned header">刻意練習</h2>
                 <br>
-                <div id="content" class="typo typo-selection m-padded-lr-responsive m-padded-tb-large">
+                <div id="content" class="typo typo-selection js-toc-content  m-padded-lr-responsive m-padded-tb-large">
                     <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
 
                     <p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
@@ -566,12 +567,20 @@ h5,h6{font-size:1em;}
     </div>
 
 </div>
-<div class="ui vertical icon buttons m-fixed m-right-bottom">
-    <button type="button" class="ui teal button">目錄</button>
-    <a href="#comment-container" class="ui teal button">留言</a>
-    <button class="ui icon button"><i class="facebook icon"></i></button>
-    <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
+<div class="m-padded m-fixed m-right-bottom">
+    <div class="ui vertical icon buttons ">
+        <button type="button" class="ui toc teal button">目錄</button>
+        <a href="#comment-container" class="ui teal button">留言</a>
+        <button class="ui icon button"><i class="facebook icon"></i></button>
+        <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
+    </div>
 </div>
+<div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+    <ol class="js-toc">
+
+    </ol>
+</div>
+
 <br>
 <br>
 <!--footer--->
@@ -614,7 +623,9 @@ h5,h6{font-size:1em;}
 <script src="http://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/tocbot/tocbot.min.js"></script>
 <script>
+
     $('.menu.toggle').click(function(){
         $('.m-item').toggleClass('m-mobile-hide');
     });
@@ -623,6 +634,21 @@ h5,h6{font-size:1em;}
         popup: $('.payQR.popup'),
         on: 'click',
         position: 'bottom center'
+    });
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+    });
+
+    $('.toc.button').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
     });
 </script>
 </body>
