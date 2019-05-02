@@ -7,6 +7,15 @@
     position: relative
 }
 
+.toc > ul {
+    overflow: hidden;
+    position: relative
+}
+
+.toc > ul li {
+    list-style: none
+}
+
 .toc > .toc-list li {
     list-style: none
 }
@@ -25,9 +34,7 @@
 .toc-list li a:hover{
     color: #00B5AD;
 }
-.toc-list li a:hover .toc-list li a:active{
-    color: teal;
-}
+
 a.toc-link {
     color: currentColor;
     height: 100%
@@ -50,7 +57,7 @@ a.toc-link {
 
 .is-active-link {
     font-weight: 700;
-    color: #0085AD !important;
+    color: #00B5AD !important;
 }
 
 .toc-link::before {

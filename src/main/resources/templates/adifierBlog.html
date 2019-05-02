@@ -571,7 +571,7 @@ h5,h6{font-size:1em;}
     <div class="ui vertical icon buttons ">
         <button type="button" class="ui toc teal button">目錄</button>
         <a href="#comment-container" class="ui teal button">留言</a>
-        <button class="ui icon button"><i class="facebook icon"></i></button>
+        <button class="ui facebook icon button"><i class="facebook icon"></i></button>
         <a href="#" class="ui icon button"><i class="chevron up icon"></i></a>
     </div>
 </div>
@@ -579,6 +579,9 @@ h5,h6{font-size:1em;}
     <ol class="js-toc">
 
     </ol>
+</div>
+<div class="ui facebook-qr flowing popup transition hidden m-padded-mini"style="width: 130px !important;">
+    <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded image" style="width: 120px !important;">
 </div>
 
 <br>
@@ -648,6 +651,11 @@ h5,h6{font-size:1em;}
     $('.toc.button').popup({
         popup: $('.toc-container.popup'),
         on: 'click',
+        position: 'left center'
+    });
+
+    $('.facebook').popup({
+        popup : $('.facebook-qr'),
         position: 'left center'
     });
 </script>
