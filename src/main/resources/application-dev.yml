@@ -4,7 +4,7 @@ logging:
   level:
     root: info
     com.adifier: debug
-  file: devlog/adifier.log
+  file: log/adifierblog.log
   config:
     classpath: logback-adifier.xml
 

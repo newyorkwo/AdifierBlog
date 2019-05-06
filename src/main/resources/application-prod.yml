@@ -1,9 +1,12 @@
 server:
   port: 8081
 logging:
-  level:
-    root: error
-    com.adifier: warn
+  level: warn
+    root: info
+    com.adifier: debug
+  file: log/adifierblog-prod.log
+  config:
+    classpath: logback-adifier.xml
 
 
 
