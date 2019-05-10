@@ -1,9 +1,8 @@
-package com.adi.web;
+package com.karu.web;
 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @description: create index controller
@@ -26,6 +25,6 @@ public class IndexController {
 
     @GetMapping("/blog")
     public String blog() {
-        return "adifierBlog";
+        return "blog";
     }
 }

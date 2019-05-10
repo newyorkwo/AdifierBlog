@@ -1,4 +1,4 @@
-package com.adi;
+package com.karu;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.adi.aspect;
+package com.karu.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -26,7 +26,7 @@ public class LogAspect {
 
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.adi.web.*.*(..))")
+    @Pointcut("execution(* com.karu.web.*.*(..))")
     public void log(){}
 
     @Before("log()")

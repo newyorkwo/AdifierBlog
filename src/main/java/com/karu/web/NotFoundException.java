@@ -1,4 +1,4 @@
-package com.adi.web;
+package com.karu.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
