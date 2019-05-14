@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客管理登錄</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+    <div class="ur container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        管理後台登錄
+                    </div>
+                </h2>
+                <br>
+                <br>
+                <img class="mb-4" alt="" width="72" height="72">
+                <form class="ui large form" method="post" action="#" th:action="@{/admin/login}">
+                    <div class="ui  segment">
+                        <div class="field" >
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <label for="username" class="sr-only">Email address</label>
+                                <input type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
+                            </div>
+
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="password-field lock icon"></i>
+                                <label for="password" class="sr-only">Password</label>
+                                <input type="password" id="password" class="form-control" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="field">
+                            <button class="ui fluid teal submit button" type="submit">Sign in</button>
+                        </div>
+                    </div>
+                    <div class="ui error mini message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">用戶與密碼錯誤</div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--/*/</th:block>/*/-->
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: '請輸入用戶名'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: '請輸入密碼'
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>
