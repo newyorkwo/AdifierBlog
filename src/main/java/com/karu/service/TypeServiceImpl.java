@@ -2,11 +2,14 @@ package com.karu.service;
 
 import com.karu.dao.TypeRepository;
 import com.karu.domain.Type;
+import com.karu.web.NotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 /**
@@ -29,23 +32,31 @@ public class TypeServiceImpl implements TypeService{
         return typeRepository.save(type);
     }
 
+    @Transactional
     @Override
     public Type getType(Long id) {
-        return null;
+
+        return typeRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
+    @Transactional
     @Override
     public Page<Type> listType(Pageable pageable) {
-        return null;
+
+        return typeRepository.findAll(pageable);
     }
 
+    @Transactional
     @Override
     public Type updateType(Long id, Type type) {
-        return null;
+        Type t=typeRepository.findById(id).orElseThrow(NotFoundException::new);
+        BeanUtils.copyProperties(type, t);
+        return typeRepository.save(t);
     }
 
+    @Transactional
     @Override
     public void deleteType(Long id) {
-
+        typeRepository.deleteById(id);
     }
 }
