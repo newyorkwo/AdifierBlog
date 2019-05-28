@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 /**
@@ -54,7 +53,6 @@ public class TypeServiceImpl implements TypeService{
         return typeRepository.save(t);
     }
 
-    @Transactional
     @Override
     public void deleteType(Long id) {
         typeRepository.deleteById(id);
