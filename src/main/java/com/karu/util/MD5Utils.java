@@ -43,7 +43,7 @@ public static String code(String str){
 
 
 public static void main(String[] args) {
-        System.out.println(code("111111"));
+        System.out.println(code("123456"));
         }
         }
 
