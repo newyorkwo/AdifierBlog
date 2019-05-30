@@ -46,8 +46,12 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-
-            <table class="ui table">
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜！操作成功</p>
+            </div>
+            <table class="ui celled table">
                 <thead>
                 <tr>
                     <th></th>
@@ -131,6 +135,13 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+    //消息提示關閉初始化
+    $('.message .close')
+        .on('click', function(){
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
 
 </script>
 </body>
