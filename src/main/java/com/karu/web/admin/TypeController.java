@@ -36,6 +36,7 @@ public class TypeController {
     public String input(){
         return "admin/types-input";
     }
+
     @PostMapping("/types")
     public String post(Type type, RedirectAttributes attributes){
         Type t=typeService.saveType(type);
