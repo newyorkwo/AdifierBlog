@@ -47,25 +47,26 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" th:action="@{/admin/types}" class="ui form">
-                <div class="required field">
+            <form action="#" method="post" th:object="${type}"  th:action="@{/admin/types}" class="ui form">
+                <div class="field">
                     <div class="ui left labeled input">
                         <label class="ui teal basic label">名稱</label>
-                        <input type="text" name="name" placeholder="分類名稱">
+                        <input type="text" name="name" placeholder="分類名稱" th:value="*{name}">
                     </div>
                 </div>
                 <div class="ui error message"></div>
                 <!--/*/
-                <div class="ui negative message" th:if="${#fields.hasErrors('name'}">
-                    <i class="close icon"></i>
-                    <div class="header">驗證失敗</div>
-                    <p th:errors="*{name}">提交資料不符規則</p>
-                </div>
+                    <div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
+                        <i class="close icon"></i>
+                        <div class="header">驗證失敗</div>
+                        <p th:errors="*{name}">提交資料不符規則</p>
+                        </div>
+                /*/-->
                 <div class="ui right aligned container">
                     <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
                     <button class="ui teal button">提交</button>
                 </div>
-                /*/-->
+
             </form>
         </div>
     </div>
@@ -107,7 +108,7 @@
             </div>
 
             <div class="seven wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">Adifier</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Karu</h4>
                 <p class="m-text-thin m-text-spaced m-opacity-mini">飛鈦網站</p>
             </div>
         </div>
@@ -130,13 +131,20 @@
     });
     $('.ui.form').form({
         fields: {
-            identifier: 'name',
+            identifier: 'name11',
             rules: [{
                 type: 'empty',
                 prompt: '請輸入分類名稱'
             }]
         }
     });
+    //消息提示關閉初始化
+    $('.message .close')
+        .on('click', function(){
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
 </script>
 </body>
 
