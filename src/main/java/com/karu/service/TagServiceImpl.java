@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author StevenWu
  * @create 2019-06-02-13:55
  */
+@Service
 public class TagServiceImpl implements TagService {
 
     @Autowired
