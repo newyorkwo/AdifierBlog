@@ -25,7 +25,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="#" class="item">註銷</a>
+                        <a href="#" class="item">登出</a>
                     </div>
                 </div>
             </div>
@@ -38,8 +38,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="teal active item">發布</a>
-            <a href="#" class="item">列表</a>
+            <a href="#" th:href="@{/admin/types/input}" class="active teal item">新增</a>
+            <a href="#" th:href="@{/admin/types}" class="item">列表</a>
         </div>
     </div>
 </div>
@@ -47,7 +47,8 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" th:object="${type}"  th:action="@{/admin/types}" class="ui form">
+            <form action="#" method="post" th:object="${type}"  th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" class="ui form">
+                <input type="hidden" name="id" th:value="*{id}">
                 <div class="field">
                     <div class="ui left labeled input">
                         <label class="ui teal basic label">名稱</label>
@@ -113,7 +114,7 @@
             </div>
         </div>
         <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019-2022 Steven Wu @ Adifier com</p>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019-2022 Steven Wu @ Karu.com</p>
     </div>
 </footer>
 <!--/*/<th:block th:replace="_fragments :: script">/*/-->
@@ -131,7 +132,7 @@
     });
     $('.ui.form').form({
         fields: {
-            identifier: 'name11',
+            identifier: 'name',
             rules: [{
                 type: 'empty',
                 prompt: '請輸入分類名稱'
