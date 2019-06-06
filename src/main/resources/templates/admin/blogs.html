@@ -46,7 +46,7 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" class="ui secondary segment form">
+            <div class="ui secondary segment form">
                 <input type="hidden" name="page">
                 <div class="inline fields">
                     <div class="field">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
 
-            </form>
+            </div>
             <div id="table-container">
                 <table th:fragment="blogList" class="ui compact teal table">
                     <thead>
@@ -106,8 +106,8 @@
                         <td th:text="${blog.published} ? '發布':'草稿'">草稿</td>
                         <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
                         <td>
-                            <a href="#" class="ui mini teal basic button">編輯</a>
-                            <a href="#" class="ui mini red basic button">刪除</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">編輯</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">刪除</a>
                         </td>
                     </tr>
                     </tbody>
@@ -168,15 +168,15 @@
             </div>
 
             <div class="seven wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">Adifier</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Karu</h4>
                 <p class="m-text-thin m-text-spaced m-opacity-mini">飛鈦網站</p>
             </div>
         </div>
         <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019-2022 Steven Wu @ Adifier com</p>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright © 2019-2022 Steven Wu @ Karu.com</p>
     </div>
 </footer>
-<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
 <script src="http://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!--/*/</th:block>/*/-->

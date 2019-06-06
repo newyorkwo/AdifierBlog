@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * 描述:
@@ -56,6 +57,11 @@ public class TypeServiceImpl implements TypeService{
         Type t=typeRepository.findById(id).orElseThrow(NotFoundException::new);
         BeanUtils.copyProperties(type, t);
         return typeRepository.save(t);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeRepository.findAll();
     }
 
     @Override
