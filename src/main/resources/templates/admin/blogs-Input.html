@@ -47,7 +47,8 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" class="ui form">
+            <form id="blog-form" action="#" th:action="@{/admin/blogs}" method="post" class="ui form">
+                <input type="hidden" name="published">
                 <div class="required field">
                     <div class="ui left labeled input">
                         <div class="ui selection compact teal basic dropdown label">
@@ -130,8 +131,8 @@
 
                 <div class="ui right aligned container">
                     <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                    <button class="ui secondary button">保存</button>
-                    <button class="ui teal button">發布</button>
+                    <button type="button" id="save-btn" class="ui secondary button">保存</button>
+                    <button type="button" id="publish-btn" class="ui teal button">發布</button>
                 </div>
             </form>
         </div>
@@ -199,14 +200,41 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+    $('#save-btn').click(function () {
+        $('[name="published"]').val(false);
+        $('blog-form').submit();
+    });
+    $('#publish-btn').click(function () {
+        $('[name="published"]').val(true);
+        $('blog-form').submit();
+    });
+
     $('.ui.form').form({
         fields: {
-            identifier: 'title',
-            rules: [{
-                type: 'empty',
-                prompt: '標題： 請輸入博客標題'
-            }]
+            title:{
+                identifier: 'title',
+                rules: [{
+                    type: 'empty',
+                    prompt: '標題： 請輸入博客標題'
+                }]
+            },
+            content:{
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '標題： 請輸入博客內容'
+                }]
+            },
+            typeId:{
+                identifier: 'typeId',
+                rules: [{
+                    type: 'empty',
+                    prompt: '標題： 請輸入博客分類'
+                }]
+            },
+
         }
+
     });
 </script>
 </body>
