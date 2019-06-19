@@ -93,7 +93,7 @@
                                 <i class="dropdown icon"></i>
                                 <div class="default text">分類</div>
                                 <div class="menu">
-                                    <div th:each="tag :${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="tag.name">java</div>
+                                    <div th:each="tag :${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}">java</div>
                                 </div>
                             </div>
                         </div>
