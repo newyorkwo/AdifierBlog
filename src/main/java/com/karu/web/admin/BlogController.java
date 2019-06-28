@@ -1,6 +1,7 @@
 package com.karu.web.admin;
 
 import com.karu.domain.Blog;
+import com.karu.domain.User;
 import com.karu.service.BlogService;
 import com.karu.service.TagService;
 import com.karu.service.TypeService;
@@ -14,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -63,6 +66,14 @@ public class BlogController {
     private void setTypeAndTag(Model model){
         model.addAttribute("types",typeService.listType());
         model.addAttribute("tags", tagService.listTag());
+    }
+
+    @PostMapping("/blogs")
+    public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
+        blog.setUser((User) session.getAttribute("user"));
+        blog.setType(typeService.getType(blog.getType().getId()));
+        blog.setTags(tagService.listTag());
+        return REDIRECT_LIST;
     }
 
 }
