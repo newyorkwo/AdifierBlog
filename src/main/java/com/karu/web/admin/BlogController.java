@@ -72,7 +72,13 @@ public class BlogController {
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typeService.getType(blog.getType().getId()));
-        blog.setTags(tagService.listTag());
+        blog.setTags(tagService.listTag(blog.getTagIds()));
+        Blog b=blogService.saveBlog(blog);
+        if(b== null){
+            attributes.addFlashAttribute("message","操作失敗");
+        }else{
+            attributes.addFlashAttribute("message","操作成功");
+        }
         return REDIRECT_LIST;
     }
 
