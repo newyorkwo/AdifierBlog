@@ -64,7 +64,7 @@ public class BlogController {
         return INPUT;
     }
 
-    @GetMapping("/blogs/{id}input")
+    @GetMapping("/blogs/{id}/input")
     public String editinput(@PathVariable Long id, Model model){
         setTypeAndTag(model);
         Blog blog=blogService.getBlog(id);

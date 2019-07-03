@@ -38,8 +38,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="teal active item">發布</a>
-            <a href="#" class="item">列表</a>
+            <a href="#" th:href="@{/admin/blogs/input}" class="teal active item">發布</a>
+            <a href="#" th:href="@{/admin/blogs}" class="item">列表</a>
         </div>
     </div>
 </div>
@@ -77,7 +77,7 @@
                         <div class="ui left labeled action input">
                             <label class="ui compact teal basic label">分類</label>
                             <div class="ui fluid selection dropdown">
-                                <input type="hidden" name="type.id" th:data-value="*{type.id}" >
+                                <input type="hidden" name="type.id" th:value="*{type}!=null ? *{type.id}" >
                                 <i class="dropdown icon"></i>
                                 <div class="default text">分類</div>
                                 <div class="menu">
@@ -117,11 +117,11 @@
                             <label for="recommend">推薦</label>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" id="shareStatement" name="shareStatement" th:checked="*{shareStatement} class="hidden">
+                            <input type="checkbox" id="shareStatement" name="shareStatement" th:checked="*{shareStatement}" class="hidden">
                             <label for="shareStatement">轉載聲明</label>
                         </div>
                         <div class="ui checkbox">
-                            <input type="checkbox" id="appreciation" name="appreciation" th:checked="*{appreciation} class="hidden">
+                            <input type="checkbox" id="appreciation" name="appreciation" th:checked="*{appreciation}" class="hidden">
                             <label for="appreciation">讚賞</label>
                         </div>
                         <div class="ui checkbox">
