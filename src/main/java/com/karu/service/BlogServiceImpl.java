@@ -3,6 +3,7 @@ package com.karu.service;
 import com.karu.dao.BlogRepository;
 import com.karu.domain.Blog;
 import com.karu.domain.Type;
+import com.karu.util.MyBeanUtils;
 import com.karu.vo.BlogQuery;
 import com.karu.web.NotFoundException;
 import org.springframework.beans.BeanUtils;
@@ -93,7 +94,8 @@ public class BlogServiceImpl implements BlogService{
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog b=blogRepository.findById(id).orElseThrow(NotFoundException::new);
-        BeanUtils.copyProperties(b,blog);
+        BeanUtils.copyProperties(blog, b, MyBeanUtils.getNullPropertyNames(blog));
+        b.setUpdateTime(new Date());
         return blogRepository.save(b);
     }
     @Transactional
