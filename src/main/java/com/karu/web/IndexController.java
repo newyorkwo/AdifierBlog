@@ -37,7 +37,7 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/blog")
+    @GetMapping("/blog/{id}")
     public String blog() {
         return "blog";
     }

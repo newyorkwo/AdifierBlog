@@ -55,7 +55,7 @@
                                 <div class="ui middle aligned mobile reversed stackable grid" th:each="blog: ${page.content}">
 
                                     <div class="eleven wide column">
-                                        <h3 class="ui header"><a href="#" class="">真理真的</a></h3>
+                                        <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black" th:text="${blog.title}">真理真的</a></h3>
                                         <p class="m-text" th:text="|${blog.description}......|">但氣象局指出，下午起隨著鋒面通過及東北季風逐漸增強，北台灣開始下雨，氣溫也下降到20度，掉了近10度。有民眾說，白天像夏天，但晚上又有春天的涼意。</p>
                                         <div class="ui grid">
                                             <div class="eleven wide column">
@@ -65,7 +65,7 @@
                                                         <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">Steven WU</a></div>
                                                     </div>
                                                     <div class="item">
-                                                        <i class="calendar icon"></i>2<span th:text="${#dates.format(blog.updateTime,'yyy-MM-dd')}" >2017-01-01</span>
+                                                        <i class="calendar icon"></i>2<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}" >2017-01-01</span>
                                                     </div>
                                                     <div class="item">
                                                         <i class="eye icon"></i><span th:text="${blog.views}">2342</span>
@@ -79,12 +79,13 @@
                                     </div>
 
                                     <div class="five wide column">
-                                        <a href="#" target="_blank">
-                                            <img src="https://picsum.photos/800/450?image=1001" alt="" class="ui rounded image">
+                                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                            <img src="https://picsum.photos/800/450?image=1001" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image">
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                            <!--/*-->
                             <div class="ui padded vertical segment m-padded-tb-large">
                                 <div class="ui middle aligned mobile reversed stackable grid">
 
@@ -425,15 +426,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--/*-->
                         </div>
                         <!--footer--->
                         <div class="ui bottom attached segment">
                             <div class="ui middle aligned two column grid">
                                 <div class="column">
-                                    <a href="#" class="ui mini teal basic button">上一頁</a>
+                                    <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.first}" class="ui mini teal basic button">上一頁</a>
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="#" class="ui mini teal basic button">下一頁</a>
+                                    <a href="#" th:href="@{/(page=${page.number}-1)}" th:unless="${page.last}" class="ui mini teal basic button">下一頁</a>
                                 </div>
                             </div>
                         </div>
