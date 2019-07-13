@@ -26,6 +26,7 @@ public class IndexController {
     @Autowired
     private TypeService typeService;
 
+    @Autowired
     private TagService tagService;
 
     @GetMapping("/")
