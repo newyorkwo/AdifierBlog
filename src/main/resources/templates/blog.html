@@ -43,29 +43,29 @@
             <div class="ui top attached segment">
                 <div class="ui horizontal link list">
                     <div class="item">
-                        <img src="https://picsum.photos/100/100?image=1001" alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header">Steven WU</a></div>
+                        <img src="https://picsum.photos/100/100?image=1001" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >Steven WU</a></div>
                     </div>
                     <div class="item">
-                        <i class="calendar icon"></i>2019-04-11
+                        <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-04-11</span>
                     </div>
                     <div class="item">
-                        <i class="eye icon"></i>2342
+                        <i class="eye icon"></i><span th:text="${blog.views}">2342</span>
                     </div>
                 </div>
             </div>
             <div class="ui attached segment">
                 <!--圖片區域-->
-                <img src="https://picsum.photos/800/450?image=1001" alt="" class="ui fluid rounded image">
+                <img src="https://picsum.photos/800/450?image=1001" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
             </div>
             <div class="ui attached padded segment">
                 <!--內容區域-->
                 <div class="ui right aligned basic segment">
-                    <div class="ui orange basic orange label">原創</div>
+                    <div class="ui orange basic orange label" th:text="${blog.flag}">原創</div>
                 </div>
-                <h2 class="ui center aligned header">刻意練習</h2>
+                <h2 class="ui center aligned header" th:text="${blog.title}" >刻意練習</h2>
                 <br>
-                <div id="content" class="typo typo-selection js-toc-content  m-padded-lr-responsive m-padded-tb-large">
+                <div id="content" class="typo typo-selection js-toc-content  m-padded-lr-responsive m-padded-tb-large" th:text="${blog.content}">
                     <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
 
                     <p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
@@ -424,7 +424,7 @@ h5,h6{font-size:1em;}
                 </div>
                 <!--標籤-->
                 <div class="m-padded-lr-responsive">
-                    <div class="ui basic teal left pointing label">方法論</div>
+                    <div class="ui basic teal left pointing label" th:each="tag :${blog.tags}" th:text="${tag.name}" >方法論</div>
                 </div>
                 <!--按讚-->
                 <div class="ui center aligned basic segment">
@@ -452,8 +452,8 @@ h5,h6{font-size:1em;}
                 <div class="ui middle aligned grid">
                     <div class="eleven wide column">
                         <ui class="list">
-                            <li>作者： Steven Wu</li>
-                            <li>發表時間： 2019-04-14</li>
+                            <span>作者： <span th:text="${blog.user.nickname}">Steven Wu</span><a href="#" th:href="@{/about}"  target="blank">(聯繫作者)</a></span></li>
+                            <li>發表時間： <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}">2019-04-14 12:00<</span></li>
                             <li>版權聲明： 2019-04-14</li>
                             <li>發表時間： 2019-04-14</li>
                         </ui>
@@ -615,7 +615,7 @@ h5,h6{font-size:1em;}
             </div>
 
             <div class="seven wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">Adifier</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Karu</h4>
                 <p class="m-text-thin m-text-spaced m-opacity-mini">飛鈦網站</p>
             </div>
         </div>
