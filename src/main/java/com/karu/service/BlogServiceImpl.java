@@ -3,6 +3,7 @@ package com.karu.service;
 import com.karu.dao.BlogRepository;
 import com.karu.domain.Blog;
 import com.karu.domain.Type;
+import com.karu.util.MarkdownUtils;
 import com.karu.util.MyBeanUtils;
 import com.karu.vo.BlogQuery;
 import com.karu.web.NotFoundException;
@@ -38,6 +39,16 @@ public class BlogServiceImpl implements BlogService{
     public Blog getBlog(Long id) {
 
         return blogRepository.findById(id).orElseThrow(NotFoundException::new);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog=blogRepository.findById(id).orElseThrow(NotFoundException::new);
+        Blog b=new Blog();
+        BeanUtils.copyProperties(blog,b);
+        String content=b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        return b;
     }
 
     @Override
