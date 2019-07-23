@@ -541,6 +541,8 @@ h5,h6{font-size:1em;}
                     </div>
                 </div>
                 <div class="ui form">
+                    <input type="text" name="blog.id" th:value="${blog.id}">
+                    <input type="text" name="parentComment.id" value="-1">
                     <div class="field">
                         <textarea name="content" placeholder="請輸入評論..."></textarea>
                     </div>
@@ -558,7 +560,7 @@ h5,h6{font-size:1em;}
                             </div>
                         </div>
                         <div class="field m-mobile-wide m-margin-bottom-small ">
-                            <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>發布</button>
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>發布</button>
                         </div>
                     </div>
                 </div>
@@ -691,6 +693,45 @@ h5,h6{font-size:1em;}
             }
             console.log('Scrolled to waypoint!')
         }
+    });
+
+    //评论表单验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入評論內容'
+                }
+                ]
+            },
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入姓名'
+                }]
+            },
+            type: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '請填寫正確的email'
+                }]
+            }
+        }
+    });
+
+    $('#commentpost-btn').click(function () {
+        var boo = $('.ui.form').form('validate form');
+        if (boo) {
+            console.log('效驗成功');
+            postData();
+        } else {
+            console.log('效驗失敗');
+        }
+
     });
 </script>
 </body>
