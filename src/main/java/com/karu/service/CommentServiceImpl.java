@@ -1,6 +1,11 @@
 package com.karu.service;
 
+import com.karu.dao.CommentRepository;
 import com.karu.domain.Comment;
+import com.karu.web.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,14 +16,24 @@ import java.util.List;
  */
 public class CommentServiceImpl implements CommentService{
 
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
-        return null;
+        Sort sort=new Sort(Sort.Direction.DESC, "createTime");
+        return commentRepository.findByBlogId(blogId, sort);
     }
 
+    @Transactional
     @Override
     public Comment saveComment(Comment comment) {
-        return null;
+        Long parentCommentId=comment.getParentComment().getId();
+        if(parentCommentId != -1){
+            comment.setParentComment(commentRepository.findById(parentCommentId).orElseThrow(NotFoundException::new));
+        }else{
+            comment.setParentComment(null);
+        }
+        return commentRepository.save(comment);
     }
 }
