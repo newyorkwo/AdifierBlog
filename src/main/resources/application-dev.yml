@@ -7,5 +7,6 @@ logging:
   file: log/adifierblog.log
   config:
     classpath: logback-adifier.xml
+comment.avatar: /images/avatar.png
 
 
