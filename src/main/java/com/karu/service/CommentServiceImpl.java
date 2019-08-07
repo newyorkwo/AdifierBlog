@@ -3,11 +3,13 @@ package com.karu.service;
 import com.karu.dao.CommentRepository;
 import com.karu.domain.Comment;
 import com.karu.web.NotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +26,8 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
         Sort sort=new Sort(Sort.Direction.DESC, "createTime");
-        return commentRepository.findByBlogId(blogId, sort);
+        List<Comment> comments=commentRepository.findByBlogId(blogId, sort);
+        return eachComment(comments);
     }
 
     @Transactional
@@ -37,5 +40,56 @@ public class CommentServiceImpl implements CommentService{
             comment.setParentComment(null);
         }
         return commentRepository.save(comment);
+    }
+    /**
+     * 循環每一個頂級的評論節點
+     * @param comments
+     * @return
+     */
+    private List<Comment> eachComment(List<Comment> comments){
+        List<Comment> commentsView=new ArrayList<>();
+        for(Comment comment: comments){
+            Comment c=new Comment();
+            BeanUtils.copyProperties(comment,c);
+            commentsView.add(c);
+        }
+        combinChildren(commentsView);
+        return commentsView;
+    }
+    /**
+     * @param comments root根節點，blog不為空的對象集合
+     */
+    private void combinChildren(List<Comment> comments){
+        for(Comment comment: comments){
+            List<Comment> replys1=comment.getReplyComments();
+            for(Comment reply1: replys1){
+                //循環迭代，找出子代，存放在tempReplys中
+                recursively(reply1);
+            }
+            //修改頂級節點的reply集合為迭代處理後的集合
+            comment.setReplyComments(tempReplys);
+            //清除暫時存放區
+            tempReplys=new ArrayList<>();
+        }
+    }
+
+    //存放迭代找出的所有子代的集合
+    private List<Comment> tempReplys = new ArrayList<>();
+    /**
+     * 递归迭代，剥洋葱
+     * @param comment 被迭代的对象
+     * @return
+     */
+    private void recursively(Comment comment) {
+        tempReplys.add(comment);//顶节点添加到临时存放集合
+        if (comment.getReplyComments().size()>0) {
+            List<Comment> replys = comment.getReplyComments();
+            for (Comment reply : replys) {
+                tempReplys.add(reply);
+                if (reply.getReplyComments().size()>0) {
+                    recursively(reply);
+                }
+            }
+        }
     }
 }
