@@ -53,6 +53,7 @@ public class CommentServiceImpl implements CommentService{
             BeanUtils.copyProperties(comment,c);
             commentsView.add(c);
         }
+        //合併評論的各層子代到第一集子代集合中
         combinChildren(commentsView);
         return commentsView;
     }
