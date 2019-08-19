@@ -12,5 +12,5 @@ import java.util.List;
  * @CreateDateTime 2019-07-27-16:08
  */
 public interface CommentRepository extends JpaRepository<Comment,Long> {
-    List <Comment> findByBlogId(Long blogId, Sort sort);
+    List <Comment> findByBlogIdAAndParentCommentNull(Long blogId, Sort sort);
 }
