@@ -476,7 +476,7 @@ h5,h6{font-size:1em;}
                                 <div class="content">
                                     <a class="author" >
                                         <span th:text="${comment.nickname}">Matt</span>
-                                        <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">博主</div>
+                                        <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">管理員</div>
                                     </a>
                                     <div class="metadata">
                                         <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
@@ -526,7 +526,7 @@ h5,h6{font-size:1em;}
                                         <p>This has been very useful for my research. Thanks as well!</p>
                                     </div>
                                     <div class="actions">
-                                        <a class="reply">回复</a>
+                                        <a class="reply">回覆</a>
                                     </div>
                                 </div>
                                 <div class="comments">
@@ -543,7 +543,7 @@ h5,h6{font-size:1em;}
                                                 Elliot you are always so right :)
                                             </div>
                                             <div class="actions">
-                                                <a class="reply">回复</a>
+                                                <a class="reply">回覆</a>
                                             </div>
                                         </div>
                                     </div>
@@ -562,7 +562,7 @@ h5,h6{font-size:1em;}
                                         Dude, this is awesome. Thanks so much
                                     </div>
                                     <div class="actions">
-                                        <a class="reply">回复</a>
+                                        <a class="reply">回覆</a>
                                     </div>
                                 </div>
                             </div>
@@ -575,7 +575,7 @@ h5,h6{font-size:1em;}
                     <input type="hidden" name="blog.id" th:value="${blog.id}">
                     <input type="hidden" name="parentComment.id" value="-1">
                     <div class="field">
-                        <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                        <textarea name="content" placeholder="請輸入評論..."></textarea>
                     </div>
                     <div class="fields">
                         <div class="field m-mobile-wide m-margin-bottom-small">
@@ -587,11 +587,11 @@ h5,h6{font-size:1em;}
                         <div class="field m-mobile-wide m-margin-bottom-small">
                             <div class="ui left icon input">
                                 <i class="mail icon"></i>
-                                <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.email}">
+                                <input type="text" name="email" placeholder="email" th:value="${session.user}!=null ? ${session.user.email}">
                             </div>
                         </div>
                         <div class="field  m-margin-bottom-small m-mobile-wide">
-                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>發布</button>
                         </div>
                     </div>
 
