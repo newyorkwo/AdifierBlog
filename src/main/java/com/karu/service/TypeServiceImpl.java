@@ -2,7 +2,7 @@ package com.karu.service;
 
 import com.karu.dao.TypeRepository;
 import com.karu.domain.Type;
-import com.karu.web.NotFoundException;
+import com.karu.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,4 +1,4 @@
-package com.karu.web.admin;
+package com.karu.web;
 
 import com.karu.domain.Comment;
 import com.karu.domain.User;

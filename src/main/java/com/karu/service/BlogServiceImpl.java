@@ -6,7 +6,7 @@ import com.karu.domain.Type;
 import com.karu.util.MarkdownUtils;
 import com.karu.util.MyBeanUtils;
 import com.karu.vo.BlogQuery;
-import com.karu.web.NotFoundException;
+import com.karu.NotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
