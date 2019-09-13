@@ -1,0 +1,47 @@
+package com.karu.web;
+
+import com.karu.domain.Tag;
+import com.karu.service.BlogService;
+import com.karu.service.TagService;
+import com.karu.vo.BlogQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
+
+/**
+ * @Description create Tag show controller
+ * @AuthorName StevenWu
+ * @CreateDateTime 2019-09-08-7:38 上午
+ */
+@Controller
+public class TagShowController {
+
+    @Autowired
+    private TagService tagService;
+
+    @Autowired
+    private BlogService blogService;
+
+    @GetMapping("/Tags/{id}")
+    public String Tags(@PageableDefault(size = 8, sort={"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                        @PathVariable Long id, Model model){
+        List<Tag> Tags=TagService.listTagTop(10000);
+        if (id == -1) {
+            id=Tags.get(0).getId();
+        }
+        BlogQuery blogQuery=new BlogQuery();
+        blogQuery.setTagId(id);
+        model.addAttribute("Tags", Tags);
+        model.addAttribute("page", blogService.listBlog(pageable, blogQuery));
+        model.addAttribute("activeTagId", id);
+        return "Tags";
+    }
+
+}
