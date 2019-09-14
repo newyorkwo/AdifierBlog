@@ -29,19 +29,18 @@ public class TagShowController {
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("/Tags/{id}")
-    public String Tags(@PageableDefault(size = 8, sort={"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+    @GetMapping("/tags/{id}")
+    public String tags(@PageableDefault(size = 8, sort={"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                         @PathVariable Long id, Model model){
-        List<Tag> Tags=TagService.listTagTop(10000);
+        List<Tag> tags=tagService.listTagTop(10000);
         if (id == -1) {
-            id=Tags.get(0).getId();
+            id=tags.get(0).getId();
         }
-        BlogQuery blogQuery=new BlogQuery();
-        blogQuery.setTagId(id);
-        model.addAttribute("Tags", Tags);
-        model.addAttribute("page", blogService.listBlog(pageable, blogQuery));
+
+        model.addAttribute("tags", tags);
+        model.addAttribute("page", blogService.listBlog(id, pageable));
         model.addAttribute("activeTagId", id);
-        return "Tags";
+        return "tags";
     }
 
 }

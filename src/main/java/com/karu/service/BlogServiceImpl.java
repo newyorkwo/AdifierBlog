@@ -80,7 +80,7 @@ public class BlogServiceImpl implements BlogService{
         return blogRepository.findAll(new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                Join join = root.join("tags");
+                Join join = root.join("tags");//關聯查詢
                 return cb.equal(join.get("id"),tagId);
             }
         },pageable);
